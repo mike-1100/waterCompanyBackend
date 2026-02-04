@@ -6,6 +6,7 @@ const pool = require("./db/db");
 
 const authRoutes = require("./routes/auth.routes");
 const waterRoutes = require("./routes/water.routes");
+const adminRoutes = require("./routes/admin.routes");
 const waterBlockchain = require("./blockchain/blockchainService");
 
 const app = express();
@@ -14,10 +15,10 @@ app.use(express.json());
 
 app.use("/auth", authRoutes);
 app.use("/water", waterRoutes);
+app.use("/admin", adminRoutes);
 app.get("/blockchain", (req, res) => {
   res.json(waterBlockchain);
 });
-
 
 app.get("/", (req, res) => {
   res.send("Auth Backend Running");
